@@ -44,6 +44,13 @@ namespace FunWithForms.Repositories
             var entity = GetById(id);
             Delete(entity);
         }
+                
+        public void Update(T entity)
+        {
+            db.Attach(entity);
+            db.Entry(entity).State = EntityState.Modified;
+            db.SaveChanges();
+        }
 
         public void Save()
         {
